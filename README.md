@@ -4,11 +4,11 @@
 
 ## Steps
 
-#### Explore Data
+#### Explore Data - OK
 
 Explore arrays in data.js
 
-#### Import Data and Set State Value
+#### Import Data and Set State Value - OK
 
 Create Carousel.jsx, import all arrays from data.js and set up state value using the useState hook, use shortList as default value (for now).
 
