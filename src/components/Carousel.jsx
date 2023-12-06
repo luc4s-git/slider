@@ -1,6 +1,6 @@
 import { shortList, list, longList } from '../data';
 import { useState } from 'react';
-import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 export default function Carousel() {
   const [people, setPeople] = useState(list);
@@ -19,10 +19,10 @@ export default function Carousel() {
         );
       })}
       <button className="prev">
-        <FaChevronLeft />
+        <MdKeyboardArrowLeft />
       </button>
       <button className="next">
-        <FaChevronRight />
+        <MdKeyboardArrowRight />
       </button>
     </div>
   );
