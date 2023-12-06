@@ -1,10 +1,11 @@
 import { shortList, list, longList } from '../data';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 
 export default function Carousel() {
   const [people, setPeople] = useState(list);
   const [currentPerson, setCurrentPerson] = useState(0);
+  const [autoPlayIsActive, setAutoPlayIsActive] = useState(true);
 
   const prevSlide = () => {
     setCurrentPerson((currentValue) => {
@@ -16,6 +17,7 @@ export default function Carousel() {
       return newValue;
     });
   };
+
   const nextSlide = () => {
     setCurrentPerson((currentValue) => {
       if (currentValue >= people.length - 1) {
@@ -27,6 +29,16 @@ export default function Carousel() {
     });
   };
 
+  useEffect(() => {
+    let sliderId = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => {
+      clearInterval(sliderId);
+    };
+  }, [currentPerson]);
+
   return (
     <section className="slider-container ">
       {people.map((person, index) => {
@@ -35,6 +47,8 @@ export default function Carousel() {
             key={person.id}
             style={{
               transform: `translateX(${100 * (index - currentPerson)}%)`,
+              opacity: index === currentPerson ? 1 : 0,
+              visibility: index === currentPerson ? 'visible' : 'hidden',
             }}
             className="slide"
           >
@@ -46,7 +60,13 @@ export default function Carousel() {
           </article>
         );
       })}
-      <button className="prev" onClick={prevSlide}>
+      <button
+        className="prev"
+        onClick={() => {
+          prevSlide();
+          setAutoPlayIsActive(!autoPlay);
+        }}
+      >
         <FaChevronLeft />
       </button>
       <button className="next" onClick={nextSlide}>
