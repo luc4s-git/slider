@@ -294,6 +294,17 @@ ul {
   margin-top: 1rem;
   color: var(--primary-500);
 }
+.prev,
+.next {
+  position: absolute;
+  top: 200px;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
 .person-img {
   width: 150px;
   height: 150px;
