@@ -310,11 +310,26 @@ ul {
   cursor: pointer;
   transition: var(--transition);
 }
+.prev:hover,
+.next:hover {
+  background-color: var(--primary-500);
+}
 .prev {
   left: 0;
 }
 .next {
   right: 0;
+}
+@media screen and (min-width: 800) {
+  .text {
+    max-width: 45em;
+  }
+  .prev,
+  .next {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
 }
 .person-img {
   width: 150px;
@@ -324,4 +339,7 @@ ul {
   object-fit: cover;
   border: 4px solid var(--primary-200);
   box-shadow: var(--shadow-3);
+}
+.next-slide {
+  transform: translateX(100%);
 }
