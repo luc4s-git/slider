@@ -1,5 +1,6 @@
 import { shortList, list, longList } from '../data';
 import { useState } from 'react';
+import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 
 export default function Carousel() {
   const [people, setPeople] = useState(list);
@@ -7,7 +8,7 @@ export default function Carousel() {
 
   return (
     <div className="slider-container ">
-      {people.map((person) => {
+      {shortList.map((person) => {
         return (
           <div key={person.id} className="slide">
             <img src={person.image} alt={person.name} className="person-img" />
@@ -17,6 +18,12 @@ export default function Carousel() {
           </div>
         );
       })}
+      <button className="prev">
+        <FaChevronLeft />
+      </button>
+      <button className="next">
+        <FaChevronRight />
+      </button>
     </div>
   );
 }
